@@ -2,6 +2,7 @@ import { TESTIMONIAL_STATUS } from "@/lib/constants";
 import type { TestimonialStatus } from "@/lib/constants";
 import type {
   DashboardTestimonial,
+  PublishedTestimonial,
   TestimonialInput,
 } from "@/types/testimonial";
 
@@ -33,9 +34,7 @@ function getApiError(payload: unknown, fallback: string): string {
   return fallback;
 }
 
-function isDashboardTestimonial(
-  value: unknown,
-): value is DashboardTestimonial {
+function isDashboardTestimonial(value: unknown): value is DashboardTestimonial {
   return (
     isRecord(value) &&
     typeof value.id === "string" &&
@@ -58,8 +57,13 @@ const DASHBOARD_FETCH_ERROR =
   "We could not load pending testimonials. Please try again.";
 const MODERATION_ERROR =
   "We could not update this testimonial. Please try again.";
+const PUBLIC_FETCH_ERROR =
+  "We could not load published testimonials. Please try again.";
 
-async function readResponse(response: Response, fallback: string): Promise<unknown> {
+async function readResponse(
+  response: Response,
+  fallback: string,
+): Promise<unknown> {
   const payload: unknown = await response.json().catch(() => null);
 
   if (!response.ok) {
@@ -69,7 +73,9 @@ async function readResponse(response: Response, fallback: string): Promise<unkno
   return payload;
 }
 
-export async function submitTestimonial(input: TestimonialInput): Promise<void> {
+export async function submitTestimonial(
+  input: TestimonialInput,
+): Promise<void> {
   const response = await fetch("/api/testimonials", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -92,7 +98,9 @@ export async function submitTestimonial(input: TestimonialInput): Promise<void> 
   }
 }
 
-export async function getPendingTestimonials(): Promise<DashboardTestimonial[]> {
+export async function getPendingTestimonials(): Promise<
+  DashboardTestimonial[]
+> {
   let response: Response;
 
   try {
@@ -136,4 +144,43 @@ export async function moderateTestimonial(
   if (!isRecord(payload) || payload.success !== true) {
     throw new Error(MODERATION_ERROR);
   }
+}
+
+function isPublishedTestimonial(value: unknown): value is PublishedTestimonial {
+  return (
+    isRecord(value) &&
+    typeof value.id === "string" &&
+    typeof value.name === "string" &&
+    typeof value.company === "string" &&
+    typeof value.testimonial === "string" &&
+    typeof value.rating === "number" &&
+    Number.isInteger(value.rating) &&
+    value.rating >= 1 &&
+    value.rating <= 5
+  );
+}
+
+export async function getApprovedTestimonials(): Promise<
+  PublishedTestimonial[]
+> {
+  let response: Response;
+
+  try {
+    response = await fetch("/api/testimonials");
+  } catch {
+    throw new Error(PUBLIC_FETCH_ERROR);
+  }
+
+  const payload = await readResponse(response, PUBLIC_FETCH_ERROR);
+
+  if (
+    !isRecord(payload) ||
+    payload.success !== true ||
+    !Array.isArray(payload.data) ||
+    !payload.data.every(isPublishedTestimonial)
+  ) {
+    throw new Error(PUBLIC_FETCH_ERROR);
+  }
+
+  return payload.data;
 }

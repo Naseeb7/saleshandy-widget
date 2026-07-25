@@ -24,6 +24,11 @@ export type SerializedTestimonial = Omit<Testimonial, "_id"> & { id: string };
 
 export type PublicTestimonial = Omit<SerializedTestimonial, "email">;
 
+export type PublishedTestimonial = Pick<
+  PublicTestimonial,
+  "id" | "name" | "company" | "testimonial" | "rating"
+>;
+
 export type ModerationTestimonial = Pick<
   SerializedTestimonial,
   | "id"
