@@ -135,8 +135,8 @@ export function TestimonialForm() {
       </div>
 
       <RatingInput
+        control={control}
         error={errors.rating?.message}
-        register={register}
         value={selectedRating}
       />
 
