@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "9561eec3-0815-403c-a030-e351f3ac3390",
+    "name": "Saleshandy Testimonials - API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40100023"
+  },
+  "item": [
+    {
+      "name": "Create Testimonials",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\":\"Ada Lovelace\",\r\n  \"email\":\"ada@example.com\",\r\n  \"company\":\"Analytical Engine\",\r\n  \"testimonial\":\"Excellent experience working with the team.\",\r\n  \"rating\":5\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/testimonials",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "testimonials"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Public/Approved Testimonials",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/testimonials",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "testimonials"
+          ]
+        },
+        "description": "Generated from cURL: curl http://localhost:3000/api/testimonials"
+      },
+      "response": []
+    },
+    {
+      "name": "Approve or Reject Testimonial",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\":\"approved\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/testimonials/{{testimonial_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "testimonials",
+            "{{testimonial_id}}"
+          ]
+        },
+        "description": "Generated from cURL: curl -X PATCH http://localhost:3000/api/testimonials/<id> \\\r\n-H \"Content-Type: application/json\" \\\r\n-d '{\r\n  \"status\":\"approved\"\r\n}'"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Dashboard/Pending Testimonials",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/dashboard/testimonials",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "dashboard",
+            "testimonials"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET http://localhost:3000/api/dashboard/testimonials"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "testimonial_id",
+      "value": ""
+    }
+  ]
+}

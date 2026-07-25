@@ -191,6 +191,25 @@ Available endpoints:
 
 ---
 
+## API Testing
+
+A ready-to-use Postman collection is included for testing the API independently of the UI.
+
+Location:
+
+```text
+postman/Saleshandy Testimonials - API Collection.postman_collection.json
+```
+
+After importing the collection, update the `base_url` collection variable to point to either:
+
+- Local development: `http://localhost:3000`
+- Deployed application: `https://your-vercel-app.vercel.app`
+
+For the moderation endpoint, set the `testimonial_id` collection variable to the ID of an existing testimonial before sending the request.
+
+---
+
 ## Widget Usage
 
 Replace the script URL with your deployed application URL.
