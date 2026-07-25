@@ -1,15 +1,29 @@
 import { TestimonialCard } from "@/components/testimonials/testimonial-card";
+import { cn } from "@/lib/cn";
 import type { PublishedTestimonial } from "@/types/testimonial";
 
 type TestimonialsGridProps = {
+  compact?: boolean;
   testimonials: PublishedTestimonial[];
 };
 
-export function TestimonialsGrid({ testimonials }: TestimonialsGridProps) {
+export function TestimonialsGrid({
+  compact = false,
+  testimonials,
+}: TestimonialsGridProps) {
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div
+      className={cn(
+        "grid gap-6 md:grid-cols-2 xl:grid-cols-3",
+        compact && "grid-cols-1 gap-4 sm:grid-cols-2",
+      )}
+    >
       {testimonials.map((testimonial) => (
-        <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+        <TestimonialCard
+          compact={compact}
+          key={testimonial.id}
+          testimonial={testimonial}
+        />
       ))}
     </div>
   );

@@ -1,9 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/cn";
 
-export function PublicEmptyState() {
+export function PublicEmptyState({ compact = false }: { compact?: boolean }) {
   return (
     <Card>
-      <CardContent className="flex flex-col items-center gap-2 py-12 text-center">
+      <CardContent
+        className={cn(
+          "flex flex-col items-center gap-2 py-12 text-center",
+          compact && "py-8",
+        )}
+      >
         <h2 className="text-lg font-semibold text-text-primary">
           No testimonials have been published yet.
         </h2>

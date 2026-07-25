@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Embeddable testimonials widget
+
+Add the following snippet to another website. The loader creates a responsive iframe
+that displays the approved testimonials from this application:
+
+```html
+<div id="testimonial-widget"></div>
+<script src="https://your-saleshandy-domain.example/widget.js"></script>
+```
+
+The widget can also target any element with the `data-testimonial-widget` attribute.
+
 ## Getting Started
 
 First, run the development server:
