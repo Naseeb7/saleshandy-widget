@@ -28,7 +28,10 @@ export async function connectToDatabase(): Promise<typeof mongoose> {
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(mongodbUri);
+    cached.promise = mongoose.connect(mongodbUri).catch((error: unknown) => {
+      cached.promise = null;
+      throw error;
+    });
   }
 
   cached.conn = await cached.promise;

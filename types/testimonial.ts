@@ -9,6 +9,8 @@ export type Testimonial = {
   rating: number;
   status: TestimonialStatus;
   expiresAt: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type TestimonialInput = Pick<
@@ -17,3 +19,7 @@ export type TestimonialInput = Pick<
 >;
 
 export type UpdateTestimonialStatusInput = Pick<Testimonial, "status">;
+
+export type SerializedTestimonial = Omit<Testimonial, "_id"> & { id: string };
+
+export type PublicTestimonial = Omit<SerializedTestimonial, "email">;
