@@ -9,7 +9,7 @@ type AlertProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 const variantClasses: Record<AlertVariant, string> = {
-  info: "border-default bg-surface-muted text-text-secondary",
+  info: "border-info bg-info-surface text-info-foreground",
   success: "border-success bg-success-surface text-success-foreground",
   danger: "border-danger bg-danger-surface text-danger-foreground",
   warning: "border-warning bg-warning-surface text-warning-foreground",

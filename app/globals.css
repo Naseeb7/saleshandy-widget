@@ -1,33 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --ds-color-background: #f7f9fc;
+  --ds-color-background: #f6f8fb;
   --ds-color-surface: #ffffff;
-  --ds-color-surface-muted: #eef2f7;
-  --ds-color-primary: #2563eb;
-  --ds-color-primary-hover: #1d4ed8;
+  --ds-color-surface-muted: #f0f3f7;
+  --ds-color-foreground: #172230;
+  --ds-color-muted: #667487;
+  --ds-color-text-primary: var(--ds-color-foreground);
+  --ds-color-text-secondary: #536274;
+  --ds-color-text-muted: var(--ds-color-muted);
+  --ds-color-primary: #416b9f;
+  --ds-color-primary-hover: #355a88;
   --ds-color-primary-foreground: #ffffff;
-  --ds-color-secondary: #e8eef7;
-  --ds-color-secondary-foreground: #1e293b;
-  --ds-color-text-primary: #172033;
-  --ds-color-text-secondary: #526079;
-  --ds-color-text-muted: #718096;
-  --ds-color-border: #d9e1ec;
-  --ds-color-success: #15803d;
-  --ds-color-success-surface: #ecfdf3;
-  --ds-color-success-foreground: #166534;
-  --ds-color-danger: #dc2626;
-  --ds-color-danger-surface: #fef2f2;
-  --ds-color-danger-foreground: #b91c1c;
-  --ds-color-warning: #b45309;
-  --ds-color-warning-surface: #fffbeb;
-  --ds-color-warning-foreground: #92400e;
+  --ds-color-secondary: #e8eef5;
+  --ds-color-secondary-foreground: #29415d;
+  --ds-color-border: #dbe2ea;
+  --ds-color-success: #39785a;
+  --ds-color-success-surface: #edf7f1;
+  --ds-color-success-foreground: #2c6248;
+  --ds-color-danger: #b95757;
+  --ds-color-danger-surface: #fcf0f0;
+  --ds-color-danger-foreground: #984444;
+  --ds-color-warning: #a87535;
+  --ds-color-warning-surface: #fcf6eb;
+  --ds-color-warning-foreground: #805b2a;
+  --ds-color-info: #52749d;
+  --ds-color-info-surface: #eef4fa;
+  --ds-color-info-foreground: #3f5f83;
 }
 
 @theme inline {
   --color-background: var(--ds-color-background);
   --color-surface: var(--ds-color-surface);
   --color-surface-muted: var(--ds-color-surface-muted);
+  --color-foreground: var(--ds-color-foreground);
+  --color-muted: var(--ds-color-muted);
   --color-primary: var(--ds-color-primary);
   --color-primary-hover: var(--ds-color-primary-hover);
   --color-primary-foreground: var(--ds-color-primary-foreground);
@@ -36,6 +43,7 @@
   --color-text-primary: var(--ds-color-text-primary);
   --color-text-secondary: var(--ds-color-text-secondary);
   --color-text-muted: var(--ds-color-text-muted);
+  --color-border: var(--ds-color-border);
   --color-default: var(--ds-color-border);
   --color-success: var(--ds-color-success);
   --color-success-surface: var(--ds-color-success-surface);
@@ -46,32 +54,57 @@
   --color-warning: var(--ds-color-warning);
   --color-warning-surface: var(--ds-color-warning-surface);
   --color-warning-foreground: var(--ds-color-warning-foreground);
+  --color-info: var(--ds-color-info);
+  --color-info-surface: var(--ds-color-info-surface);
+  --color-info-foreground: var(--ds-color-info-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --radius-card: 1rem;
   --radius-control: 0.625rem;
-  --shadow-card: 0 12px 32px -24px rgb(23 32 51 / 0.45);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ds-color-background: #111827;
-    --ds-color-surface: #1f2937;
-    --ds-color-surface-muted: #273449;
-    --ds-color-secondary: #334155;
-    --ds-color-secondary-foreground: #f8fafc;
-    --ds-color-text-primary: #f8fafc;
-    --ds-color-text-secondary: #cbd5e1;
-    --ds-color-text-muted: #94a3b8;
-    --ds-color-border: #475569;
-    --ds-color-success-surface: #123524;
-    --ds-color-danger-surface: #3b1d22;
-    --ds-color-warning-surface: #3b2d16;
-  }
+  --shadow-card: 0 10px 28px -22px rgb(23 34 48 / 0.38);
 }
 
 body {
   background-color: var(--ds-color-background);
-  color: var(--ds-color-text-primary);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ds-color-foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.widget-scope {
+  --widget-accent: var(--ds-color-primary);
+}
+
+.widget-accent-text {
+  color: var(--widget-accent);
+}
+
+.widget-accent-focus:focus-visible {
+  outline: 2px solid var(--widget-accent);
+  outline-offset: 2px;
+}
+
+.testimonial-preview {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.dialog-panel {
+  scrollbar-color: var(--ds-color-border) transparent;
+  scrollbar-width: thin;
+}
+
+.dialog-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dialog-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dialog-panel::-webkit-scrollbar-thumb {
+  background: var(--ds-color-border);
+  border-radius: 999px;
 }

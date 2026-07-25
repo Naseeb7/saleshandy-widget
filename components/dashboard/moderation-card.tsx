@@ -36,11 +36,11 @@ export function ModerationCard({
     <Card>
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-lg font-semibold text-text-primary">
+          <div className="min-w-0 flex flex-col gap-1">
+            <h2 className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold text-text-primary">
               {testimonial.name}
             </h2>
-            <p className="text-sm text-text-secondary">
+            <p className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-sm text-text-secondary">
               {testimonial.email} · {testimonial.company}
             </p>
           </div>
@@ -56,16 +56,19 @@ export function ModerationCard({
             {"★".repeat(testimonial.rating)}
             <span className="sr-only"> {testimonial.rating} out of 5</span>
           </div>
-          <blockquote className="text-text-primary">
+          <blockquote className="break-words text-text-primary">
             &ldquo;{testimonial.testimonial}&rdquo;
           </blockquote>
         </div>
 
         <div className="flex flex-col gap-4 border-t border-default pt-4 sm:flex-row sm:items-center sm:justify-between">
-          <time className="text-sm text-text-muted" dateTime={testimonial.createdAt}>
+          <time
+            className="break-words text-sm text-text-muted"
+            dateTime={testimonial.createdAt}
+          >
             Submitted {formatSubmissionDate(testimonial.createdAt)}
           </time>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Button
               disabled={isProcessing}
               onClick={() => onModerate(TESTIMONIAL_STATUS.REJECTED)}

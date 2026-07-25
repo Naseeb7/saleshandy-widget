@@ -5,11 +5,13 @@ import type { PublishedTestimonial } from "@/types/testimonial";
 type TestimonialsGridProps = {
   compact?: boolean;
   testimonials: PublishedTestimonial[];
+  useWidgetAccent?: boolean;
 };
 
 export function TestimonialsGrid({
   compact = false,
   testimonials,
+  useWidgetAccent = false,
 }: TestimonialsGridProps) {
   return (
     <div
@@ -23,6 +25,7 @@ export function TestimonialsGrid({
           compact={compact}
           key={testimonial.id}
           testimonial={testimonial}
+          useWidgetAccent={useWidgetAccent}
         />
       ))}
     </div>
