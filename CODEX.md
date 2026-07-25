@@ -116,6 +116,62 @@ Avoid unnecessary animations and visual effects.
 
 ---
 
+# Frontend Engineering Standards
+
+These standards apply to every frontend implementation unless explicitly overridden.
+
+## Design System
+
+- Use only the established semantic design tokens.
+- Never hardcode colors in Tailwind class names.
+- Avoid arbitrary values unless absolutely necessary.
+- If a new design token is required, define it centrally and reuse it throughout the project.
+
+## UI Components
+
+- Reuse shared UI primitives whenever appropriate.
+- Use the shared `cn()` utility for all class name composition.
+- Do not use string interpolation for composing class names.
+- Components should consume semantic utility classes instead of raw design values.
+
+## Layout
+
+- Keep the DOM shallow.
+- Avoid unnecessary wrapper elements.
+- Choose the simplest layout primitive:
+  - Flexbox for one-dimensional layouts.
+  - CSS Grid for two-dimensional layouts.
+  - Normal document flow where no layout system is needed.
+- Parent layouts should control spacing using `gap`.
+- Avoid child margins for layout spacing whenever possible.
+
+## Component Architecture
+
+- Components should have a single responsibility.
+- Prefer composition over duplication.
+- Keep reusable components generic.
+- Keep page components focused on composition.
+- Move reusable logic into hooks or utilities where appropriate.
+- Keep business logic outside JSX whenever practical.
+
+## Accessibility
+
+- Use semantic HTML.
+- Associate labels correctly.
+- Support keyboard navigation.
+- Provide visible focus states.
+- Add ARIA attributes only where appropriate.
+
+## Code Quality
+
+- Maintain strict TypeScript.
+- Avoid unnecessary state.
+- Avoid unnecessary effects.
+- Prefer readability over clever abstractions.
+- Keep implementations simple and maintainable.
+
+---
+
 ## Development Rules
 
 - Complete one milestone before starting another.
