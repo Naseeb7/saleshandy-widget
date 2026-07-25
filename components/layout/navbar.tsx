@@ -20,7 +20,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-10 border-b border-default bg-surface/95 backdrop-blur">
+    <header className="sticky top-0 z-10 border-b border-default bg-surface">
       <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           className="flex shrink-0 items-center gap-2 rounded-control text-sm font-semibold text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
