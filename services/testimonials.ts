@@ -8,6 +8,7 @@ import {
   type TestimonialDocument,
 } from "@/models/testimonial";
 import type {
+  ModerationTestimonial,
   PublicTestimonial,
   SerializedTestimonial,
   TestimonialInput,
@@ -58,6 +59,21 @@ function serializePublicTestimonial(
   };
 }
 
+function serializeModerationTestimonial(
+  testimonial: SerializableTestimonialWithEmail,
+): ModerationTestimonial {
+  return {
+    id: testimonial._id.toString(),
+    name: testimonial.name,
+    email: testimonial.email,
+    company: testimonial.company,
+    testimonial: testimonial.testimonial,
+    rating: testimonial.rating,
+    status: testimonial.status,
+    createdAt: testimonial.createdAt,
+  };
+}
+
 function getRejectedExpiryDate(): Date {
   const ttlDays = Number(process.env[REJECT_TTL_DAYS_ENV]);
 
@@ -95,7 +111,7 @@ export async function getApprovedTestimonials(): Promise<PublicTestimonial[]> {
 }
 
 export async function getPendingTestimonials(): Promise<
-  SerializedTestimonial[]
+  ModerationTestimonial[]
 > {
   await connectToDatabase();
 
@@ -105,7 +121,7 @@ export async function getPendingTestimonials(): Promise<
     .sort({ createdAt: -1 })
     .lean<SerializableTestimonialWithEmail[]>();
 
-  return testimonials.map(serializeTestimonial);
+  return testimonials.map(serializeModerationTestimonial);
 }
 
 export async function updateTestimonialStatus(
