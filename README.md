@@ -9,10 +9,8 @@ Saleshandy Testimonials is a full-stack testimonial platform for collecting, rev
 
 ## Live Demo
 
-- **Application:** https://your-vercel-url.vercel.app
-- **Widget:** https://your-vercel-url.vercel.app/widget
-
-> Replace the URLs above with your deployed Vercel application before submission.
+- **Application:** https://saleshandy-widget.vercel.app/
+- **Widget:** https://saleshandy-widget.vercel.app/widget
 
 ---
 
@@ -204,7 +202,7 @@ postman/Saleshandy Testimonials - API Collection.postman_collection.json
 After importing the collection, update the `base_url` collection variable to point to either:
 
 - Local development: `http://localhost:3000`
-- Deployed application: `https://your-vercel-app.vercel.app`
+- Deployed application: `https://saleshandy-widget.vercel.app/`
 
 For the moderation endpoint, set the `testimonial_id` collection variable to the ID of an existing testimonial before sending the request.
 
@@ -218,14 +216,14 @@ Replace the script URL with your deployed application URL.
 
 ```html
 <div id="testimonial-widget"></div>
-<script src="https://your-vercel-url.vercel.app/widget.js"></script>
+<script src="https://saleshandy-widget.vercel.app/widget.js"></script>
 ```
 
 The data-attribute format is also supported:
 
 ```html
 <div data-testimonial-widget></div>
-<script src="https://your-vercel-url.vercel.app/widget.js"></script>
+<script src="https://saleshandy-widget.vercel.app/widget.js"></script>
 ```
 
 ### Accent Customization
@@ -237,7 +235,7 @@ Invalid values automatically fall back to the default accent color without affec
 ```html
 <div data-testimonial-widget data-accent="#2563eb"></div>
 
-<script src="https://your-vercel-url.vercel.app/widget.js"></script>
+<script src="https://saleshandy-widget.vercel.app/widget.js"></script>
 ```
 
 The widget intentionally exposes only accent customization. Layout, fonts, themes, animations, and other styling remain controlled internally.
