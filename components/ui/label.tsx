@@ -1,9 +1,11 @@
 import type { LabelHTMLAttributes } from "react";
 
+import { cn } from "@/lib/cn";
+
 export function Label({ className = "", ...props }: LabelHTMLAttributes<HTMLLabelElement>) {
   return (
     <label
-      className={`mb-2 block text-sm font-medium text-text-primary ${className}`}
+      className={cn("mb-2 block text-sm font-medium text-text-primary", className)}
       {...props}
     />
   );

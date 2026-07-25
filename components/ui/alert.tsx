@@ -1,5 +1,7 @@
 import type { HTMLAttributes } from "react";
 
+import { cn } from "@/lib/cn";
+
 type AlertVariant = "info" | "success" | "danger" | "warning";
 
 type AlertProps = HTMLAttributes<HTMLDivElement> & {
@@ -21,7 +23,11 @@ export function Alert({
   return (
     <div
       role="status"
-      className={`rounded-control border px-4 py-3 text-sm ${variantClasses[variant]} ${className}`}
+      className={cn(
+        "rounded-control border px-4 py-3 text-sm",
+        variantClasses[variant],
+        className,
+      )}
       {...props}
     />
   );

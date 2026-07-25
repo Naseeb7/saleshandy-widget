@@ -1,5 +1,7 @@
 import type { ButtonHTMLAttributes } from "react";
 
+import { cn } from "@/lib/cn";
+
 type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -24,7 +26,11 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex min-h-10 items-center justify-center rounded-control px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 disabled:cursor-not-allowed ${variantClasses[variant]} ${className}`}
+      className={cn(
+        "inline-flex min-h-10 items-center justify-center rounded-control px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 disabled:cursor-not-allowed",
+        variantClasses[variant],
+        className,
+      )}
       {...props}
     />
   );
