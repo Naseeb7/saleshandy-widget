@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Testimonials Widget Test</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        color: #172033;
+        background: #f7f9fc;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      .widget-test {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border: 2px dashed #2563eb;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Testimonials Widget Test</h1>
+      <p>
+        This standalone page simulates an independent third-party website and
+        verifies both supported widget container formats.
+      </p>
+
+      <section>
+        <h2>ID selector</h2>
+        <div class="widget-test">
+          <div id="testimonial-widget"></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data attribute selector</h2>
+        <div class="widget-test">
+          <div data-testimonial-widget></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="http://localhost:3000/widget.js"></script>
+  </body>
+</html>
