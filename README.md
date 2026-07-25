@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Embeddable widget
 
-Add this snippet to another website, replacing the script URL with the deployed application URL:
+Add this default snippet to another website, replacing the script URL with the deployed application URL:
 
 ```html
 <div id="testimonial-widget"></div>
@@ -48,6 +48,20 @@ The loader also supports any element with the `data-testimonial-widget` attribut
 ```html
 <div data-testimonial-widget></div>
 ```
+
+An optional `data-accent` attribute accepts a six-digit hex color and changes the
+widget's accent color without affecting the host page or the application's theme:
+
+```html
+<div
+  id="testimonial-widget"
+  data-accent="#2563eb"
+></div>
+<script src="https://your-saleshandy-domain.example/widget.js"></script>
+```
+
+Only values in the `#RRGGBB` format are accepted. Invalid or omitted values use
+the default accent color.
 
 ## Validation
 

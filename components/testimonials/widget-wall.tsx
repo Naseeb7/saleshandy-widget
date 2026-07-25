@@ -67,6 +67,7 @@ export function WidgetWall() {
       <div className="flex flex-col items-center gap-3 py-8">
         <Alert variant="danger">{error}</Alert>
         <Button
+          className="widget-accent-focus"
           onClick={() => void loadTestimonials()}
           type="button"
           variant="secondary"
@@ -78,7 +79,11 @@ export function WidgetWall() {
   }
 
   return testimonials.length > 0 ? (
-    <TestimonialsGrid compact testimonials={testimonials} />
+    <TestimonialsGrid
+      compact
+      testimonials={testimonials}
+      useWidgetAccent
+    />
   ) : (
     <PublicEmptyState compact />
   );

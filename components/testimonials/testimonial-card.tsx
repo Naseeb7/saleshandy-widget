@@ -5,11 +5,13 @@ import type { PublishedTestimonial } from "@/types/testimonial";
 type TestimonialCardProps = {
   compact?: boolean;
   testimonial: PublishedTestimonial;
+  useWidgetAccent?: boolean;
 };
 
 export function TestimonialCard({
   compact = false,
   testimonial,
+  useWidgetAccent = false,
 }: TestimonialCardProps) {
   return (
     <Card>
@@ -18,7 +20,7 @@ export function TestimonialCard({
       >
         <div
           aria-label={`${testimonial.rating} out of 5 stars`}
-          className="text-warning"
+          className={useWidgetAccent ? "widget-accent-text" : "text-warning"}
           role="img"
         >
           {"★".repeat(testimonial.rating)}
