@@ -48,6 +48,7 @@ export function TestimonialForm() {
       testimonial: "",
       rating: 0,
     },
+    mode: "onChange",
     resolver: zodResolver(testimonialFormSchema),
   });
   const selectedRating = useWatch({ control, name: "rating" });
