@@ -1,48 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Saleshandy Testimonials
 
-## Embeddable testimonials widget
+A production-ready testimonial workflow built with Next.js, TypeScript, MongoDB, and Mongoose.
 
-Add the following snippet to another website. The loader creates a responsive iframe
-that displays the approved testimonials from this application:
+The application supports public testimonial submission, moderation, an approved testimonials wall, and an embeddable widget.
+
+## Getting started
+
+Install dependencies and create a local environment file:
+
+```bash
+npm install
+copy .env.example .env
+```
+
+Set the following values in `.env`:
+
+- `MONGODB_URI` — MongoDB Atlas connection string.
+- `REJECT_TTL_DAYS` — number of days rejected testimonials remain stored.
+- `NEXT_PUBLIC_SITE_URL` — public application URL used for canonical metadata and sitemap links.
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Application routes
+
+- `/` — approved testimonials wall.
+- `/submit` — public testimonial submission form.
+- `/dashboard` — pending testimonial moderation dashboard.
+- `/widget` — compact widget page used by the embed loader.
+
+## Embeddable widget
+
+Add this snippet to another website, replacing the script URL with the deployed application URL:
 
 ```html
 <div id="testimonial-widget"></div>
 <script src="https://your-saleshandy-domain.example/widget.js"></script>
 ```
 
-The widget can also target any element with the `data-testimonial-widget` attribute.
+The loader also supports any element with the `data-testimonial-widget` attribute:
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```html
+<div data-testimonial-widget></div>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Validation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```

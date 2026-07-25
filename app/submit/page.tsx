@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { TestimonialForm } from "@/components/testimonials/testimonial-form";
+
+export const metadata: Metadata = {
+  title: "Submit a Testimonial",
+  description: "Share your experience with Saleshandy.",
+};
 
 export default function SubmitTestimonialPage() {
   return (

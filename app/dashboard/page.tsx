@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import { ModerationDashboard } from "@/components/dashboard/moderation-dashboard";
+
+export const metadata: Metadata = {
+  title: "Moderation Dashboard",
+  description: "Review pending customer testimonials.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function DashboardPage() {
   return (

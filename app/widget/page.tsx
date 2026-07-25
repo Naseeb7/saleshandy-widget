@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import { WidgetWall } from "@/components/testimonials/widget-wall";
+
+export const metadata: Metadata = {
+  title: "Customer Testimonials Widget",
+  description: "An embeddable display of approved customer testimonials.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function WidgetPage() {
   return (
