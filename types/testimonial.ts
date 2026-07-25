@@ -35,3 +35,10 @@ export type ModerationTestimonial = Pick<
   | "status"
   | "createdAt"
 >;
+
+export type DashboardTestimonial = Omit<
+  ModerationTestimonial,
+  "createdAt"
+> & {
+  createdAt: string;
+};
